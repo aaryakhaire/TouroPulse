@@ -1,0 +1,267 @@
+:root {
+    --bg-color: #F8FAFC; 
+    --card-bg: rgba(255, 255, 255, 0.75);
+    --border-color: rgba(15, 23, 42, 0.08);
+    --accent-primary: #00BAFF; 
+    --accent-secondary: #FF6B6B; 
+    --accent-gradient: linear-gradient(135deg, #00BAFF 0%, #FF6B6B 100%);
+    --text-primary: #0F172A; 
+    --text-secondary: #64748B;
+    --prism-glow: 0 0 20px rgba(0, 186, 255, 0.2);
+}
+
+/* DYNAMIC MESH BACKGROUND */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(0, 186, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(255, 107, 107, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(0, 186, 255, 0.03) 0%, transparent 60%);
+    background-attachment: fixed;
+    animation: meshFlow 20s infinite alternate ease-in-out;
+}
+
+@keyframes meshFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* KINETIC LAYOUT CAPSULE */
+.bento-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 40px;
+    perspective: 1000px;
+}
+
+/* DASHBOARD HERO */
+.dash-hero {
+    margin-bottom: 50px;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.dash-hero h1 {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* KINETIC 3D CARDS */
+.dash-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 30px !important;
+    backdrop-filter: blur(40px) saturate(180%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    text-align: center;
+}
+
+.dash-card:hover {
+    transform: translateY(-10px) rotateX(4deg) rotateY(-2deg);
+    border-color: rgba(0, 186, 255, 0.3);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* HOLOGRAPHIC PRISM BORDER */
+.dash-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    padding: 2px;
+    background: linear-gradient(135deg, transparent, rgba(0, 186, 255, 0.4), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.6s;
+    pointer-events: none;
+}
+
+.dash-card:hover::before {
+    opacity: 1;
+}
+
+/* KINETIC SHIMMER SWEEP */
+.dash-card::after {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+    transition: 0.8s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.dash-card:hover::after {
+    animation: sweep 1.2s infinite;
+    opacity: 0.1;
+}
+
+@keyframes sweep {
+    0% { top: -150%; left: -150%; }
+    100% { top: 150%; left: 150%; }
+}
+
+.kpi-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 250px;
+    padding: 30px !important;
+}
+
+.kpi-title {
+    color: var(--text-secondary);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.kpi-value-container {
+    height: 100px; /* Fixed height for the main value area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers number vertically in the 100px slot */
+    align-items: center;
+    width: 100%;
+}
+
+.kpi-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 15px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* SIDEBAR - Overdrive */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(40px) saturate(180%);
+    border-right: 1px solid var(--border-color);
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 26px;
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+
+.sidebar .nav-link {
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--accent-primary);
+    background: rgba(0, 186, 255, 0.06);
+    transform: translateX(4px);
+}
+
+.sidebar .nav-link.active {
+    color: var(--accent-primary);
+    background: rgba(0, 186, 255, 0.1);
+    font-weight: 700;
+}
+
+/* CONTENT AREA - Offset for sidebar */
+.content {
+    margin-left: 260px;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+/* AURORA BACKGROUND CONTAINER */
+.aurora-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(140px);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    animation: moveBlob 30s infinite alternate;
+}
+
+@keyframes moveBlob {
+    0% { transform: translate(-20%, -20%) rotate(0deg); }
+    100% { transform: translate(50%, 40%) rotate(360deg); }
+}
+
+/* PREDICTION INPUTS */
+.prediction-input {
+    margin-bottom: 12px !important;
+}
+
+.prediction-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.prediction-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 186, 255, 0.3);
+}

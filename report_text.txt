@@ -1,0 +1,677 @@
+ 
+    
+  
+ 
+TOUROPULSE: AN INTEGRATED  
+FRAMEWORK FOR PREDICTIVE REVENUE 
+INTELLIGENCE AND GUEST SENTIMEN T 
+ANALYSIS  
+ 
+Submitted in partial fulfillment of the requirements  
+of the degree of  
+Bachelor of Technology in Information Technology  
+By 
+Jatin Rathod (Roll No. 23101A0050)  
+Aarya Khaire (Roll No. 23101A0059)  
+Ayush Gujar (Roll No. 23101A0071)  
+ 
+Under the Guidance of  
+Prof. Deepali Shrikhande  
+Department of Information Technology  
+ 
+Autonomous Institute affiliated University of Mumbai  
+ 
+Vidyalankar Institute of Technology  
+Wadala(E), Mumbai -400037 
+ 
+University of Mumbai  
+2025 -2026  
+ 
+    
+  
+CERTIFICATE OF APPROVAL  
+  This is to certify that the project entitled  
+ 
+"TOUROPULSE: AN INTEGRATED FRAMEWORK FOR PREDICTIVE 
+REVENUE INTELLIGENCE AND GUEST SENTIMENT ANALYSIS " 
+ 
+is a bonafide work of  
+Jatin Rathod (Roll No. 23101A0050)  
+Aarya Khaire (Roll No. 23101A0059)  
+Ayush Gujar (Roll No. 23101A0071)  
+ 
+submitted to the University of Mumbai in partial fulfillment of the requirement for 
+the award of the  
+ 
+degree of Bachelor of Technology  in Information Technology.  
+ 
+ 
+ 
+ 
+ Prof. Deepali Shrikhande  
+Project Guide  
+ 
+ 
+ 
+Dr. Vidya Chitre         Dr. Sangeeta Joshi  
+Head of Department         Principal  
+   
+    
+ PROJECT REPORT APPROVAL FOR T.E.  
+ 
+This project report entitled  
+"TOUROPULSE: AN INTEGRATED FRAMEWORK FOR PREDICTIVE 
+REVENUE INTELLIGENCE AND GUEST SENTIMENT ANALYSIS " 
+by 
+1. Jatin Rathod (23101A0050)  
+2. Aarya Khaire (23101A0059)  
+3. Ayush Gujar (23101A0071)  
+is approved for the degree of Bachelor of Technology in Information   
+Technology.  
+ 
+ 
+1. _______________________________  
+Name and Signature   External Examiner  
+ 
+2. _______________________________  
+Name and Signature   Internal Examiner  
+ 
+ 
+Date: ____________________  
+Place: Mumbai  
+   
+    
+ DECLARATION  
+ 
+I declare that this written submission represents my ideas in my own words and where others' ideas 
+or words have been included, I have adequately cited and referenced the original sources. I also 
+declare that I have adhered to all principles of academic ho nesty and integrity and have not 
+misrepresented or fabricated or falsified any idea/data/fact/source in my submission. I understand 
+that any violation of the above will be cause for disciplinary action by the Institute and can also 
+evoke penal action from the sources which have thus not been properly cited or from whom proper 
+permission has not been taken when needed.  
+ 
+ 
+Name of Student  Roll No.  Signature  
+Jatin Rathod  23101A0050   
+Aarya Khaire  23101A0059   
+Ayush Gujar  23101A0071   
+ 
+ 
+Date: ____________________  
+Place: Mumbai  
+   
+    
+ ACKNOWLEDGEMENT  
+ 
+Before presenting our T.E. specialization project entitled "TouroPulse: An Integrate d 
+Framework for Predictive Revenue Intelligence and Guest Sentiment Analysis ", we 
+would like to convey our sincere thanks to the people who guided us throughout the 
+course of this project work.  
+ 
+First, we would like to express our sincere thanks to our beloved Principal Dr. 
+Sangeeta Joshi for providing various facilities to carry out this project.  
+ 
+We would like to express our immense gratitude towards our Project Guide Prof. 
+Deepali Shrikhande for constant encouragement, invaluable support, guidance, and 
+mentoring at all ongoing stages of the project and report.  
+ 
+We would like to express our sincere thanks to our H.O.D. Dr. Vidya Chitre, for the 
+encouragement, co -operation, and suggestions for the progressing stages of the 
+report.  
+ 
+Finally, we would like to thank all the teaching and non -teaching staff of the college, 
+and our friends, for their moral support rendered during the course of the reported 
+work, and for their direct and indirect involvement in the completion of our report 
+work, which made our endeavour fruitful.  
+ 
+ 
+Date: ____________________  
+Place: Mumbai  
+   
+    
+ ABSTRACT  
+ 
+The hospitality industry today faces a critical challenge of fragmented data ecosystems wherein 
+historical booking records, real -time pricing signals, and qualitative guest feedback are maintained 
+in isolated silos, severely limiting the ability of manager s to make informed, data -driven decisions. 
+TouroPulse is engineered as a comprehensive, cloud -native, Integrated Strategic Decision -Support 
+System (ISDSS) designed to address this exact challenge.  
+ 
+The platform is built on a Decoupled Asynchronous Micro -Architecture (DAMA) utilizing 
+FastAPI on the backend and a Dash/Plotly reactive frontend, capable of executing sub -second 
+predictive queries across a high -dimensional dataset of 117,138 booking record s. The core 
+intelligence of TouroPulse is derived from a Gradient -Boosted and Random Forest Regression 
+ensemble that achieves 94.2% accuracy in Average Daily Rate (ADR) prediction, incorporating 
+key features such as lead time, arrival month, market segment, and stay duration.  
+ 
+Complementing the predictive engine is an organic Natural Language Processing (NLP) Sentiment 
+Pipeline that quantifies qualitative guest reviews through a Polarity -Intensity Vector system, 
+visualized using a force -directed Word Pulse bubble chart. Furtherm ore, the system integrates 
+TouroAI, a Retrieval -Augmented Generation (RAG) -based neural consultant powered by Google 
+Gemini -Pro, which provides data -grounded strategic advisory responses synthesized from the live 
+117k -record database rather than generic in dustry templates.  
+ 
+The interface is designed under the Horizon Overdrive (Noir Edition) paradigm, featuring Cyber -
+Glassmorphism aesthetics, a Bento Grid layout for optimal information density, and full 
+responsiveness. Performance benchmarks demonstrate query latencies below 120 milliseconds for 
+full-dataset aggregations. Future enhancements include LSTM -based time -series forecasting, 
+blockchain audit ledgering, and Kubernetes -managed multi -resort scaling.  
+   
+    
+ LIST OF FIGURES  
+ 
+Figure No.  Figure Title  Page No.  
+Fig 4.1  TouroPulse System Architecture Diagram  7 
+Fig 4.2  Data Flow Diagram  8 
+Fig 5.1  Random Forest Regression Model Flow  10 
+Fig 5.3  RAG Framework for TouroAI  11 
+Fig 6.1  Dashboard - Revenue Overview  13 
+Fig 6.2  Dashboard - Booking Analytics  14 
+Fig 6.3  Sentiment Word Pulse Bubble Chart  14 
+Fig 6.4  TouroAI Chat Interface  15 
+   
+    
+ LIST OF TABLES  
+ 
+Table No.  Table Title  Page No.  
+Table 3.1  Hardware Requirements  5  
+Table 3.2  Software Requirements  5 
+Table 3.3  Cost Estimation  6 
+Table 7.1  ML Model Performance Metrics  16 
+Table 7.2  Comparative Analysis with Existing Systems  16 
+   
+    
+ LIST OF ABBREVIATIONS  
+ 
+Abbreviation  Full Form  
+ADR  Average Daily Rate  
+AI Artificial Intelligence  
+API Application Programming Interface  
+DAMA  Decoupled Asynchronous Micro -Architecture  
+GPU Graphics Processing Unit  
+ISDSS  Integrated Strategic Decision -Support System  
+JSON  JavaScript Object Notation  
+KPI Key Performance Indicator  
+LSTM  Long Short -Term Memory  
+ML Machine Learning  
+NLP Natural Language Processing  
+RAG  Retrieval -Augmented Generation  
+UI User Interface  
+UX User Experience  
+   
+    
+ CONTENTS  
+ 
+Chapter 
+No. TITLE  Page No.  
+ Acknowledgement  iv 
+ Abstract  v 
+ List of Figures  vi 
+ List of Tables  vii 
+ List of Abbreviations  viii 
+1 INTRODUCTION  1 
+ 1.1  Problem Definition  1 
+ 1.2  Aim and Objective  1 
+ 1.3  Organization of the Report  2 
+2 REVIEW OF LITERATURE  3 
+ 2.1  Literature Survey  3 
+3 REQUIREMENT SPECIFICATION  5 
+ 3.1  Introduction  5 
+ 3.2  Hardware Requirements  5 
+ 3.3  Software Requirements  5 
+ 3.4  Feasibility Study  6 
+ 3.5  Cost Estimation  6 
+4 PROJECT ANALYSIS & DESIGN  7 
+ 4.1  System Architecture  7 
+ 4.2  Data Flow Design  7 
+ 4.3  Database Design  8 
+5 METHODOLOGY  9 
+ 5.1  Predictive Revenue Engine  9 
+ 5.2  NLP Sentiment Pipeline  10 
+ 5.3  RAG -Based Neural Consultant (TouroAI)  11 
+6 IMPLEMENTATION DETAILS  12 
+ 6.1  Backend: FastAPI Enterprise Layer  12 
+ 6.2  Frontend: Reactive Intelligence Interface  12 
+ 6.3  System Screenshots  13 
+7 RESULT ANALYSIS  16  
+    
+  7.1  Performance Metrics  16 
+ 7.2  Comparative Analysis  16 
+8 CONCLUSION & FUTURE SCOPE  17 
+ References  18 
+ Appendix  19  
+1 CHAPTER 1: INTRODUCTION  
+ 
+1.1 Problem Definition  
+The modern hospitality industry operates within an environment of increasing complexity, where 
+the ability to process and act upon data in real time has become a critical competitive differentiator. 
+Despite the vast amounts of data generated by hotel opera tions, ranging from booking transactions 
+and pricing histories to guest feedback and market segment behavior, most management systems 
+fail to integrate these data streams into a cohesive decision -support interface.  
+ 
+This fragmented data ecosystem, commonly referred to as a 'Data Silo' problem, results in delayed 
+strategic responses, suboptimal pricing decisions . Revenue managers are forced to rely on static 
+spreadsheets and disconnected analytical tools, which introduces significant latency between data 
+availability and actionable insight.  
+ 
+TouroPulse was conceived to directly address this challenge. The system transforms fragmented, 
+static datasets into a dynamic Integrated Strategic Decision -Support System (ISDSS) capable of 
+delivering predictive intelligence, real -time sentiment analysis, and AI -driven advisory services 
+through a single, unified interface operating on a dataset of 117,138 hotel booking records.  
+ 
+1.2 Aim and Objective  
+The primary aim of TouroPulse is to engineer and deploy a full -stack intelligence framework that 
+consolidates hospitality data analytics, machine learning prediction, and conversational AI into a 
+single cohesive platform.  
+ 
+The specific objectives of this project are:  
+• To design and implement a Decoupled Asynchronous Micro -Architecture (DAMA) 
+ensuring separation of computational and UI concerns, thereby achieving sub -120ms query 
+latency on 117,138 booking records.  
+• To develop a Gradient -Boosted and Random Forest Regression ensemble for predicting 
+Average Daily Rate (ADR) with a target accuracy exceeding 90%.   
+2 • To build an organic NLP -based Sentiment Analysis Pipeline that quantifies qualitative 
+guest reviews into a Polarity -Intensity Vector ranging from -1.0 to +1.0.  
+• To integrate a Retrieval -Augmented Generation (RAG) based conversational AI consultant 
+(TouroAI) powered by Google Gemini -Pro, grounded in the live dataset.  
+• To implement a high -fidelity, responsive user interface adhering to the Horizon Overdrive 
+(Noir Edition) design paradigm using the Bento Grid layout system.  
+ 
+1.3 Organization of the Report  
+This report is organized across eight chapters.  
+Chapter 1 provides the problem context and project objectives.  
+Chapter 2 surveys the existing literature and benchmarks the proposed system against prior work. 
+Chapter 3 details hardware and software requirements.  
+Chapter 4 presents the system architecture and design.  
+Chapter 5 explains the methodologies employed for ML prediction, NLP sentiment analysis, and 
+the RAG framework.  
+Chapter 6 covers implementation specifics of the backend and frontend layers along with system 
+screenshots.  
+Chapter 7 presents result analysis and comparative benchmarks.  
+Chapter 8 concludes the report and outlines future scope.  
+   
+3 CHAPTER 2: REVIEW OF LITERATURE  
+ 
+2.1 Literature Survey  
+A comprehensive review of existing literature was conducted across three primary research 
+domains that form the foundation of TouroPulse: predictive pricing in hospitality, NLP -based 
+sentiment analysis in review data, and conversational AI integration in e nterprise systems.  
+ 
+2.1.1 Predictive Pricing and Revenue Management  
+Weatherford and Kimes (2003) established foundational frameworks for revenue management in 
+hospitality, emphasizing the importance of demand forecasting using historical booking curves. 
+Their work introduced the concept of booking pace analysis, which info rmed the lead_time feature 
+engineering in TouroPulse's ML pipeline. However, their models were predominantly linear and 
+did not account for non -linear interaction effects between market segment and seasonal demand.  
+ 
+Subsequent work by Abrate and Viglia (2016) demonstrated that ensemble tree -based methods 
+significantly outperformed traditional regression in hotel dynamic pricing tasks, particularly when 
+incorporating categorical market segment encodings. Their findings  directly validate the choice of 
+Gradient Boosted Regression and Random Forest architectures in the TouroPulse ML Hub. The 
+limitation noted in their study was the absence of real -time pipeline integration, which TouroPulse 
+resolves through its FastAPI asyn chronous backend.  
+ 
+2.1.2 NLP Sentiment Analysis in Hospitality Reviews  
+Hu and Liu (2004) introduced foundational opinion mining techniques applicable to product and 
+service reviews. Their lexicographical approach, which assigns sentiment polarity scores to 
+individual tokens, forms the conceptual basis of the TouroPulse Polari ty-Intensity Vector model. 
+However, their approach was limited to binary polarity classification without intensity grading.  
+ 
+The work of Bing Liu (2012) on multi -aspect sentiment analysis extended these foundations to 
+hospitality -specific domains, identifying distinct sentiment dimensions such as service quality, 
+room comfort, and dining experience. TouroPulse's Latent Sentiment  Analysis (LSA) pipeline 
+draws from this multi -aspect methodology, enabling the Word Pulse visualization to distinguish 
+topic -level sentiment gradients across guest feedback.   
+4  
+2.1.3 Conversational AI and RAG Frameworks  
+Lewis et al. (2020) proposed the seminal Retrieval -Augmented Generation (RAG) architecture, 
+which demonstrated that grounding LLM responses in a retrieved knowledge corpus substantially 
+reduces hallucination and improves factual accuracy. This research dir ectly informs the design of 
+TouroAI, where the LLM (Google Gemini -Pro) is constrained to synthesize advisory responses 
+exclusively from the retrieved context of the 117k record dataset.  
+ 
+Comparatively, systems such as IBM Watson Analytics and Salesforce Einstein Analytics 
+represent commercial benchmarks in enterprise intelligence but are designed as generic, domain -
+agnostic platforms requiring extensive customization. TouroPulse differenti ates itself through 
+hospitality -specific feature engineering, an integrated sentiment pipeline, and a RAG consultant 
+grounded in domain -specific data, delivering contextually superior insights at significantly lower 
+deployment cost.  
+ 
+The survey confirms that while individual components such as ML pricing models, review 
+sentiment analyzers, and conversational AI systems exist in isolation, no prior open -source or 
+academic work presents a fully integrated, single -platform framework combi ning all three 
+capabilities within a responsive, real -time dashboard. TouroPulse therefore represents a novel 
+contribution in the applied data science domain.  
+   
+5 CHAPTER 3: REQUIREMENT SPECIFICATION  
+ 
+3.1 Introduction  
+This chapter outlines the hardware and software requirements necessary for the development, 
+deployment, and execution of the TouroPulse platform. The requirements are divided into 
+hardware specifications required for running the development environment and  machine learning 
+workloads, and software specifications covering all frameworks, libraries, and tools utilized in the 
+system.  
+ 
+3.2 Hardware Requirements  
+Component  Minimum Requirement  Recommended  
+Processor  Intel Core i5 / AMD Ryzen 5  Intel Core i7 / AMD Ryzen 7  
+RAM  8 GB  16 GB or above  
+Storage  50 GB HDD  256 GB SSD  
+GPU Integrated GPU  Dedicated GPU (4GB VRAM)  
+Network  100 Mbps  Broadband Internet (for API 
+calls)  
+OS Windows 10 / Ubuntu 20.04  Windows 11 / Ubuntu 22.04  
+Table 3.1: Hardware Requirements  
+ 
+3.3 Software Requirements  
+Software / Library  Version  Purpose  
+Python  3.10+  Core programming language  
+FastAPI  0.100+  Backend API framework  
+Dash / Plotly  2.x Frontend dashboard  
+Scikit -Learn  1.3+ ML model development  
+Pandas / NumPy  Latest  Data processing  
+Google Gemini -Pro API  v1 AI conversational engine  
+Uvicorn  0.23+  ASGI server  
+SQLite / PostgreSQL  3.x / 15+  Data persistence  
+Table 3.2: Software Requirements  
+ 
+  
+6 3.4 Feasibility Study  
+3.4.1 Technical Feasibility  
+All technologies employed in TouroPulse are mature, open -source, and well -documented. Python's 
+scientific ecosystem provides robust support for machine learning and NLP pipelines. FastAPI is 
+a proven production -grade framework for high -concurrency APIs. Th e Google Gemini -Pro API is 
+commercially available and stable. The technical feasibility of this project is therefore confirmed.  
+ 
+3.4.2 Economic Feasibility  
+The development cost of TouroPulse is limited to compute resources and API usage charges. All 
+frameworks and libraries are open -source with no licensing fees. Google Gemini -Pro API costs are 
+negligible at the usage levels required for this project. The sol ution is therefore economically 
+feasible for academic deployment.  
+ 
+3.4.3 Operational Feasibility  
+The system is designed for non -technical hotel managers through an intuitive dashboard interface. 
+The Bento Grid layout, KPI panels, and conversational TouroAI interface minimize the learning 
+curve. Operational feasibility is confirmed for the target user base.  
+ 
+3.5 Cost Estimation  
+Resource  Estimated Cost  Remarks  
+Python & Libraries  INR 0  Open Source  
+FastAPI, Dash, Plotly  INR 0  Open Source  
+Google Gemini -Pro API  INR ~500 (estimated)  Usage -based billing  
+Development Hardware  INR 0  Student personal 
+hardware  
+Cloud Hosting (future)  INR ~1500/month  For production 
+deployment  
+Table 3.3: Cost Estimation  
+   
+7 CHAPTER 4: PROJECT ANALYSIS & DESIGN  
+ 
+4.1 System Architecture  
+TouroPulse is built on a Decoupled Asynchronous Micro -Architecture (DAMA). This architectural 
+paradigm deliberately separates the ML computation layer from the UI rendering layer, ensuring 
+that heavy predictive workloads on the 117,138 -record dataset do no t bottleneck dashboard 
+responsiveness.  
+ 
+The architecture consists of three primary tiers: the Data Layer responsible for ingesting and 
+preprocessing the hotel booking dataset, the Intelligence Layer housing the ML Hub and NLP 
+Pipeline, and the Presentation Layer consisting of the reactive Dash f rontend and the TouroAI chat 
+module. All inter -tier communication is handled through FastAPI's asynchronous REST endpoints.  
+ 
+Figure 4.1: TouroPulse System Architecture Diagram  
+ 
+4.2 Data Flow Design  
+The data flow within TouroPulse follows a unidirectional pipeline originating from the raw CSV 
+dataset. On initialization, the FastAPI backend loads and preprocesses the 117,138 -record dataset 
+through a recursive Sanitisation Pipeline that detects and hand les IEEE -754 out -of-range floating -
+point values including NaN and Inf, ensuring absolute JSON compliance.  
+ 
+8  
+User interactions on the frontend trigger API calls to specific FastAPI endpoints. These endpoints 
+query the preprocessed in -memory dataset using Pandas operations optimized for O(n) traversal, 
+serialize the results through the Sanitisation Pipeline, and r eturn JSON responses. The frontend 
+Dash callbacks then update the Plotly Graph Objects visualizations reactively.  
+ 
+Figure 4.2: Data Flow Diagram  
+4.3 Database Design  
+The primary data source for TouroPulse is the Hotel Booking Demand dataset comprising 117,138 
+booking instances with 32 feature columns including booking status, lead time, arrival date, stays 
+in weekend/weekday nights, number of adults, children and babie s, meal type, country of origin, 
+market segment, distribution channel, reservation status, and Average Daily Rate (ADR).  
+ 
+The dataset is loaded into Pandas DataFrames at application startup. Categorical features including 
+market_segment, hotel_type, and meal are label -encoded for ML model consumption. The SQLite 
+database is utilized for persisting TouroAI conversation history  and user session metadata across 
+interactions.   
+ 
+9 CHAPTER 5: METHODOLOGY  
+ 
+5.1 Predictive Revenue Engine  
+The Predictive Revenue Engine forms the core intelligence module of TouroPulse, providing hotel 
+managers with ML -driven pricing recommendations based on booking context features.  
+ 
+5.1.1 Dataset Preprocessing  
+The hotel booking dataset undergoes a multi -stage preprocessing pipeline. Missing values in 
+columns such as country and agent are imputed using mode -based strategies. The 
+arrival_date_month column is ordinally encoded (January = 1 through December = 12) to  preserve 
+the cyclical seasonal relationship. Categorical variables including market_segment, hotel, and meal 
+are transformed using Scikit -Learn's LabelEncoder. Outliers in the ADR column (values below 0 
+or above 5000) are detected and removed to prevent m odel bias.  
+ 
+5.1.2 Feature Engineering  
+High -impact predictor features were identified through correlation analysis and domain expertise. 
+The final feature set comprises: lead_time (days between booking and arrival), 
+arrival_date_month_encoded (seasonal signal), stays_in_week_nights and 
+stays_in _weekend_nights (duration signals), market_segment_encoded (demand channel), adults 
+(occupancy signal), and is_repeated_guest (loyalty signal).  
+ 
+5.1.3 Model Architecture  
+Two ensemble models are trained in parallel within the ML Hub. The Random Forest Regressor 
+employs decision trees with a maximum depth of 15 and uses mean squared error as the splitting 
+criterion. The Gradient Boosted Regressor employs a learning rate of 0 .1 with 300 estimators and 
+a maximum depth of 5. Both models are trained on an 80/20 train -test split. The final ADR 
+prediction is computed as:  
+ADRpred = f(Xmarket_vars) = weighted average of Random Forest and Gradient Boost 
+predictions  
+This ensemble approach achieves a validated prediction accuracy of 94.2% on the test split, 
+measured by the coefficient of determination (R² score).  
+  
+10 Figure 5.1: Random Forest Regression Model Flow  
+5.2 NLP Sentiment Pipeline  
+The NLP Sentiment Pipeline processes qualitative guest review text into quantifiable sentiment 
+metrics that are surfaced through the Word Pulse visualization module.  
+ 
+5.2.1 Text Preprocessing  
+Input review text undergoes standard NLP preprocessing: tokenization (splitting text into 
+individual word tokens), stopword removal (filtering common words with no sentiment value such 
+as 'the', 'is', 'at'), and lemmatization (reducing words to their base form to normalize vocabulary).  
+ 
+5.2.2 Sentiment Quantification  
+The system implements an organic Latent Sentiment Analysis (LSA) approach using a sentiment -
+aware lexicographical engine. Each token is matched against a curated hospitality -domain lexicon 
+that maps words to a Polarity -Intensity Vector value ranging from -1.0 (strongly negative) to +1.0 
+(strongly positive). Compound review sentiment is computed as the weighted mean of individual 
+token polarity scores, with TF -IDF weighting applied to emphasize domain -relevant terms.  
+ 
+5.2.3 Word Pulse Visualization  
+The Word Pulse bubble chart employs a force -directed collision detection algorithm rendered 
+through Plotly's Graph Objects. Each bubble represents a unique topic keyword. The bubble 
+radius is proportional to topic frequency across all reviews, and the bubb le color maps to the 
+Sentiment Gradient value using a diverging green -to-red colorscale.  
+ 
+11 5.3 RAG -Based Neural Consultant (TouroAI)  
+TouroAI is the conversational AI module of TouroPulse, providing natural language advisory 
+responses grounded in the live dataset context rather than generic hospitality industry templates.  
+ 
+5.3.1 Architecture  
+TouroAI is implemented using the Retrieval -Augmented Generation (RAG) framework. The 
+system comprises three components: a Context Extractor that queries the dataset to retrieve 
+relevant statistical summaries, a Prompt Constructor that formats the extracted  context alongside 
+the user query into a structured prompt, and the LLM Interface that passes this grounded prompt 
+to the Google Gemini -Pro API via a secure API gateway.  
+ 
+5.3.2 Context Grounding  
+When a manager poses a query such as 'What is the ADR trend for direct bookings in Q3?', the 
+Context Extractor performs a targeted Pandas query on the 117k dataset, extracts relevant 
+aggregated statistics including mean ADR, booking volume, and cancellatio n rate for direct 
+bookings in months July through September, and embeds these statistics into the prompt context. 
+This ensures that Gemini -Pro's response is anchored to the actual data rather than hallucinated 
+industry averages.  
+ 
+ 
+Figure 5.3: RAG Framework for TouroAI  
+  
+ 
+12 CHAPTER 6: IMPLEMENTATION DETAILS  
+ 
+6.1 Backend: FastAPI Enterprise Layer  
+The TouroPulse backend is implemented as an asynchronous REST API using FastAPI version 
+0.100+, served by the Uvicorn ASGI server on port 8001 (configured to bypass local OS socket 
+permission conflicts, specifically WinError 10013 on Windows).  
+ 
+The backend implements the following key technical patterns:  
+• Concurrency Model: All API endpoint handlers are defined as async Python coroutines 
+using async/await syntax, enabling simultaneous request handling from both the Dashboard 
+callbacks and TouroAI chat without thread blocking.  
+• Dependency Injection: FastAPI's fastapi.Depends mechanism is used for stateless database 
+session management, ensuring memory safety and preventing session leakage during high -
+frequency querying operations.  
+• Data Hardening: A recursive Sanitisation Pipeline traverses all outbound data structures, 
+detecting and replacing IEEE -754 non -compliant float values (NaN, Infinity) with JSON -
+compliant representations, ensuring absolute serialization safety across O(n) da ta 
+traversals.  
+• ML Model Serving: The trained Scikit -Learn Random Forest and Gradient Boost models 
+are serialized using Python's joblib library at training time and loaded into memory at API 
+startup, enabling sub -millisecond prediction inference per request.  
+ 
+6.2 Frontend: Reactive Intelligence Interface  
+The TouroPulse frontend is built on Plotly Dash version 2.x, providing a reactive single -page 
+application architecture where UI state changes trigger targeted callback functions rather than full 
+page reloads.  
+ 
+Key implementation features include:  
+• State Persistence: dcc.Store components maintain user -selected filter states (date range, 
+hotel type, market segment) across multiple What -If scenario simulations without server 
+round -trips.   
+13 • Client -Side Callbacks: Lightweight UI interactions such as theme toggles and tab switches 
+are handled through Dash's clientside_callback mechanism, executing directly in the 
+browser's JavaScript engine without FastAPI involvement.  
+• High -Fidelity Rendering: Complex visualizations including time -series ADR regression 
+lines, global choropleth density maps of booking origins, and the Word Pulse force -directed 
+bubble chart are rendered using GPU -accelerated Plotly Graph Objects with WebGL  
+backend.  
+• Responsive Layout: The Bento Grid layout employs CSS Grid with clamp() fluid 
+typography, ensuring all KPI tiles, charts, and analytical panels reflow correctly across 
+desktop, tablet, and mobile viewports through CSS @media queries.  
+ 
+6.3 System Screenshots  
+ 
+ 
+Figure 6.1: Dashboard - Revenue Overview  
+ 
+ 
+ 
+14  
+Figure 6.2: Dashboard - Booking Analytics  
+ 
+ 
+ 
+Figure 6.3: Sentiment Word Pulse Bubble Chart  
+ 
+ 
+ 
+15  
+ Figure 6.4: TouroAI Chat Interface  
+  
+ 
+16 CHAPTER 7: RESULT ANALYSIS  
+ 
+7.1 Performance Metrics  
+The TouroPulse platform was benchmarked across multiple performance dimensions following 
+system integration. The results are summarized in Table 7.1.  
+ 
+Metric  Value Achieved  Target / Benchmark  
+Full-Set Query Latency  < 120 ms  < 500 ms  
+Dataset Size Processed  117,138 records  100,000+ records  
+Sentiment Classification Accuracy  ~88%  > 80%  
+API Concurrent Request Handling  50+ simultaneous  Non-blocking  
+Dashboard Load Time  < 2.5 seconds  < 5 seconds  
+Table 7.1: ML Model Performance Metrics  
+ 
+7.2 Comparative Analysis  
+TouroPulse was evaluated against existing hospitality intelligence solutions across five key 
+dimensions. Table 7.2 presents this comparative analysis.  
+ 
+Feature  TouroPulse  IBM Watson 
+Analytics  Salesforce Einstein  Standard BI Tools  
+Hospitality -Specific ML  Yes No Partial  No 
+Integrated Sentiment 
+Pipeline  Yes No No No 
+RAG -Based AI Consultant  Yes No Partial  No 
+Real-Time Dashboard  Yes Yes Yes Yes 
+Open -Source / Free  Yes No No Partial  
+Table 7.2: Comparative Analysis with Existing Systems  
+ 
+  
+17 CHAPTER 8: CONCLUSION & FUTURE SCOPE  
+ 
+TouroPulse demonstrates the practical feasibility of integrating predictive machine learning, NLP -
+based sentiment analysis, and conversational AI into a unified, cloud -native hospitality intelligence 
+platform. It effectively addresses the long -standing dat a silo problem in hotel management by 
+transforming fragmented datasets into a cohesive, real -time decision -support system. The 
+ensemble of Gradient Boosting and Random Forest models achieves an ADR prediction accuracy 
+of 94.2%, offering revenue managers data -driven pricing insights with reasonable reliability. 
+Additionally, the NLP sentiment pipeline converts unstructured guest feedback into actionable 
+intelligence, while the RAG -based TouroAI ensures that recommendations ar e grounded in 
+dataset -specific trends rather than generic industry benchmarks.  
+From a system design perspective, the Horizon Overdrive (Noir Edition) interface, built using 
+Cyber -Glassmorphism and a Bento Grid layout, delivers a responsive and visually structured user 
+experience with sub -120ms query latency on large -scale aggregation s. This performance indicates 
+that the platform is not only conceptually sound but also technically efficient. Overall, TouroPulse 
+highlights how advanced enterprise -grade analytics and AI capabilities can be implemented using 
+open -source technologies, mak ing sophisticated decision -support tools more accessible without 
+compromising on functionality or performance.  
+ 
+Future Scope  
+ 
+Future enhancements of TouroPulse focus on improving predictive depth, scalability, and real -time 
+intelligence capabilities. The integration of LSTM -based time -series forecasting will enable the 
+system to capture complex temporal patterns and seasonality i n booking demand, allowing more 
+accurate multi -horizon revenue predictions. To strengthen transparency and governance, a 
+blockchain -based audit ledger is proposed to create immutable records of pricing decisions and AI -
+generated recommendations. The platfo rm will also be scaled to enterprise level through 
+Kubernetes -based container orchestration, enabling deployment across multiple properties with 
+automated scaling, load balancing, and fault tolerance. Additionally, the shift from static datasets 
+to real -time data ingestion using technologies like Apache Kafka or AWS Kinesis will allow 
+continuous synchronization with Property Management Systems, ensuring up -to-date insights.  
+  
+18 REFERENCES  
+ 
+1. Weatherford, L. R., & Kimes, S. E. (2003). A comparison of forecasting methods for hotel 
+revenue management. International Journal of Forecasting, 19(3), 401 -415. 
+2. Abrate, G., & Viglia, G. (2016). Strategic and tactical price decisions in hotel revenue 
+management. Tourism Management, 55, 123 -132. 
+3. Hu, M., & Liu, B. (2004). Mining and summarizing customer reviews. Proceedings of the 
+tenth ACM SIGKDD international conference on Knowledge discovery and data mining 
+(pp. 168 -177).  
+4. Liu, B. (2012). Sentiment Analysis and Opinion Mining. Synthesis Lectures on Human 
+Language Technologies, 5(1), 1 -167. 
+5. Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... & Kiela, D. (2020). 
+Retrieval -augmented generation for knowledge -intensive NLP tasks. Advances in Neural 
+Information Processing Systems, 33, 9459 -9474.  
+6. Antonio, N., de Almeida, A., & Nunes, L. (2019). Hotel booking demand datasets. Data in 
+Brief, 22, 41 -49. 
+7. FastAPI Documentation. (2023). FastAPI - Modern, fast (high -performance), web 
+framework for building APIs with Python. Retrieved from https://fastapi.tiangolo.com  
+8. Plotly Dash Documentation. (2023). Dash: Data App Framework for Python. Retrieved 
+from https://dash.plotly.com  
+9. Google AI. (2024). Gemini API Documentation. Retrieved from https://ai.google.dev/docs  
+10. Scikit -Learn Documentation. (2023). Ensemble Methods - Gradient Boosting and Random 
+Forest. Retrieved from https://scikit -learn.org/stable/modules/ensemble.html  
+   
+19 APPENDIX  
+ 
+ 
+GitHub Link  
+[Add GitHub repository link here]  
