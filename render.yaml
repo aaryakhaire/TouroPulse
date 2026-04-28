@@ -16,9 +16,12 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn dash_app:server --bind 0.0.0.0:$PORT --workers 1 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
+      - key: WEB_CONCURRENCY
+        value: 1
+      - key: GUNICORN_CMD_ARGS
+        value: "--timeout 120"
       - key: API_URL
         value: "https://touropulse-api.onrender.com" # NOTE: Once API is deployed, this should be the API's Render URL
