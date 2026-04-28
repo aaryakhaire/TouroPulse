@@ -6,14 +6,14 @@ import plotly.express as px
 dash.register_page(__name__, path="/pricing")
 
 # Load data
-bookings = pd.read_csv("data/cleaned_bookings.csv")
+from dashboard.data_loader import bookings
 
 # 1. ADR DISTRIBUTION BOX PLOT (Heavy Analysis)
 fig_box = px.box(
     bookings, 
     x="hotel", 
     y="adr", 
-    points="all", 
+    points="outliers", 
     title="Price Dispersion & Yield Opportunity",
     color="hotel",
     color_discrete_sequence=['#0EA5E9', '#F43F5E']
