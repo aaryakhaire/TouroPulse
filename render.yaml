@@ -16,7 +16,7 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: cd dashboard && gunicorn app:server --bind 0.0.0.0:$PORT
+    startCommand: gunicorn dashboard.app:server --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0

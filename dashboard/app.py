@@ -1,11 +1,13 @@
 import dash
 from dash import html, dcc
 
-from components.chatbot import render_chatbot
+import os
+from dashboard.components.chatbot import render_chatbot
 
 app = dash.Dash(
     __name__, 
     use_pages=True,
+    pages_folder=os.path.join(os.path.dirname(__file__), 'pages'),
     external_stylesheets=[
         "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap"
     ]

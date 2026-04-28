@@ -6,7 +6,7 @@ import plotly.express as px
 dash.register_page(__name__, path="/pricing")
 
 # Load data
-bookings = pd.read_csv("../data/cleaned_bookings.csv")
+bookings = pd.read_csv("data/cleaned_bookings.csv")
 
 # 1. ADR DISTRIBUTION BOX PLOT (Heavy Analysis)
 fig_box = px.box(

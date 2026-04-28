@@ -19,7 +19,7 @@ import re
 dash.register_page(__name__, path="/sentiment")
 
 # ── Load Data ──
-reviews = pd.read_csv("../data/reviews_with_sentiment.csv")
+reviews = pd.read_csv("data/reviews_with_sentiment.csv")
 
 # ══════════════════════════════════════════════════════════════
 # 1. SENTIMENT DISTRIBUTION (Report Section 5.2.2)

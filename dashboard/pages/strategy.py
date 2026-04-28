@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 dash.register_page(__name__, path="/strategy")
 
 # Load data
-bookings = pd.read_csv("../data/cleaned_bookings.csv")
+bookings = pd.read_csv("data/cleaned_bookings.csv")
 
 # 1. LEAD TIME DISTRIBUTION
 fig_lead = px.histogram(

@@ -6,7 +6,7 @@ import plotly.express as px
 dash.register_page(__name__, path="/demand")
 
 # Load data
-bookings = pd.read_csv("../data/cleaned_bookings.csv")
+bookings = pd.read_csv("data/cleaned_bookings.csv")
 
 # Sort months correctly
 months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
