@@ -157,10 +157,9 @@ const sendMessage = async () => {
     chatHistory.scrollTop = chatHistory.scrollHeight;
 
     try {
-        // Dynamic API Endpoint for Deployment (Viva-Ready)
-        const API_BASE = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' 
-                         ? 'http://127.0.0.1:8001' 
-                         : ''; // Set empty for relative requests on same-origin deployment
+        // Fail-Safe API Routing (Local, File, and Cloud support)
+        const isLocal = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost' || window.location.protocol === 'file:';
+        const API_BASE = isLocal ? 'http://127.0.0.1:8001' : ''; 
         
         const response = await fetch(`${API_BASE}/chat`, {
             method: 'POST',
