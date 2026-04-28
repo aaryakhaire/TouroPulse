@@ -1,0 +1,22 @@
+services:
+  # 1. FastAPI Backend API
+  - type: web
+    name: touropulse-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # 2. Dash Dashboard
+  - type: web
+    name: touropulse-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn dashboard.app:server
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: API_URL
+        value: "https://touropulse-api.onrender.com" # NOTE: Once API is deployed, this should be the API's Render URL

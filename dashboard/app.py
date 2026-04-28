@@ -10,6 +10,7 @@ app = dash.Dash(
         "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap"
     ]
 )
+server = app.server
 
 app.layout = html.Div([
 
